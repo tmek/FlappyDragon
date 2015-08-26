@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flappy Dragon</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="app.css" rel="stylesheet" />
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="lib/firebase.js"></script>
+    <script src="lib/three.min.js"></script>
+    <script src="lib/OBJMTLLoader.js"></script>
+    <script src="lib/MTLLoader.js"></script>
+    <script src="src/AltOBJMTLLoader.js"></script>
+    <script src="src/AltRenderer.js"></script>
+    <script src="src/cursor/CursorEvents.js"></script>
+    <script src="src/cursor/AltObjectControls.js"></script>
+    <script src="src/sync/FirebaseSync.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Flappy Dragon!</h1>
+    </header>
+
+    <div>
+        <h1 id="status"></h1>
+    </div>
+
+    <div id="score">
+        0
+    </div>
+
+    <div id="stats">
+        delta: <span id="delta"></span><br/>
+        time: <span id="time"></span><br />
+        fps: <span id="fps"></span><br />
+    </div>
+
+    <div id="highscores">
+
+    </div>
+
+    <div id="sync">
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

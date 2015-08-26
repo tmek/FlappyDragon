@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB20867B-B512-4F8F-B8E5-0980FF59614E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlappyDragon</RootNamespace>
+    <AssemblyName>FlappyDragon</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="examples\adding-cubes.html" />
+    <Content Include="examples\chess.html" />
+    <Content Include="examples\dice-grid.html" />
+    <Content Include="examples\follow-cursor.html" />
+    <Content Include="examples\models\AltspaceCube\altspace-logo.jpg" />
+    <Content Include="examples\models\AltspaceDice\d00_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d10_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d12_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d20_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d4_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d6_DIFF.jpg" />
+    <Content Include="examples\models\AltspaceDice\d8_DIFF.jpg" />
+    <Content Include="examples\models\ChessPieces\434343.png" />
+    <Content Include="examples\models\ChessPieces\bishop.jpg" />
+    <Content Include="examples\models\ChessPieces\board.jpg" />
+    <Content Include="examples\models\ChessPieces\king.jpg" />
+    <Content Include="examples\models\ChessPieces\knight.jpg" />
+    <Content Include="examples\models\ChessPieces\pawn.jpg" />
+    <Content Include="examples\models\ChessPieces\queen.jpg" />
+    <Content Include="examples\models\ChessPieces\queen.tga" />
+    <Content Include="examples\models\ChessPieces\rook.jpg" />
+    <Content Include="examples\models\SolarSystem\earthWClouds.jpg" />
+    <Content Include="examples\models\SolarSystem\earth_normal_map.tif" />
+    <Content Include="examples\models\SolarSystem\jupiter.jpg" />
+    <Content Include="examples\models\SolarSystem\mars.jpg" />
+    <Content Include="examples\models\SolarSystem\mercury.jpg" />
+    <Content Include="examples\models\SolarSystem\moon.jpg" />
+    <Content Include="examples\models\SolarSystem\neptune.jpg" />
+    <Content Include="examples\models\SolarSystem\pluto_fictional.jpg" />
+    <Content Include="examples\models\SolarSystem\saturn.jpg" />
+    <Content Include="examples\models\SolarSystem\saturn_ring_alpha.png" />
+    <Content Include="examples\models\SolarSystem\sun.jpg" />
+    <Content Include="examples\models\SolarSystem\uranus.jpg" />
+    <Content Include="examples\models\SolarSystem\venus_surface.jpg" />
+    <Content Include="examples\solar-system.html" />
+    <Content Include="examples\sounds\drippy.mp3" />
+    <Content Include="examples\sounds\drippy.wav" />
+    <Content Include="examples\spinning-cube.html" />
+    <Content Include="images\ws_Summer_clouds_1280x1024.jpg" />
+    <Content Include="Models\BaseRing.mtl" />
+    <Content Include="Models\BaseRing.obj" />
+    <Content Include="Models\Cloud.mtl" />
+    <Content Include="Models\Cloud.obj" />
+    <Content Include="Models\Dragon.mtl" />
+    <Content Include="Models\Dragon.obj" />
+    <Content Include="Models\FarmHouseAndProps.mtl" />
+    <Content Include="Models\FarmHouseAndProps.obj" />
+    <Content Include="Models\Terrain.mtl" />
+    <Content Include="Models\Terrain.obj" />
+    <Content Include="Models\TreeTrunk.mtl" />
+    <Content Include="Models\TreeTrunk.obj" />
+    <Content Include="lib\README.md" />
+    <Content Include="fonts\04B_19__.TTF" />
+    <Content Include="sounds\sfx_die.ogg" />
+    <Content Include="sounds\sfx_hit.ogg" />
+    <Content Include="sounds\sfx_point.ogg" />
+    <Content Include="sounds\sfx_swooshing.ogg" />
+    <Content Include="sounds\sfx_wing.ogg" />
+    <Content Include="examples\models\AltspaceCube\cube.mtl" />
+    <Content Include="examples\models\AltspaceCube\cube.obj" />
+    <Content Include="examples\models\AltspaceDice\d00_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d00_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d10_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d10_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d12_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d12_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d20_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d20_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d4_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d4_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d6_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d6_high.obj" />
+    <Content Include="examples\models\AltspaceDice\d8_high.mtl" />
+    <Content Include="examples\models\AltspaceDice\d8_high.obj" />
+    <Content Include="examples\models\ATTRIBUTIONS.md" />
+    <Content Include="examples\models\ChessPieces\bishop.mtl" />
+    <Content Include="examples\models\ChessPieces\bishop.obj" />
+    <Content Include="examples\models\ChessPieces\board.mtl" />
+    <Content Include="examples\models\ChessPieces\board.obj" />
+    <Content Include="examples\models\ChessPieces\king.mtl" />
+    <Content Include="examples\models\ChessPieces\king.obj" />
+    <Content Include="examples\models\ChessPieces\knight.mtl" />
+    <Content Include="examples\models\ChessPieces\knight.obj" />
+    <Content Include="examples\models\ChessPieces\pawn.mtl" />
+    <Content Include="examples\models\ChessPieces\pawn.obj" />
+    <Content Include="examples\models\ChessPieces\queen.fbx" />
+    <Content Include="examples\models\ChessPieces\queen.mtl" />
+    <Content Include="examples\models\ChessPieces\queen.obj" />
+    <Content Include="examples\models\ChessPieces\rook.mtl" />
+    <Content Include="examples\models\ChessPieces\rook.obj" />
+    <Content Include="examples\models\SolarSystem\earth.mtl" />
+    <Content Include="examples\models\SolarSystem\earth.obj" />
+    <Content Include="examples\models\SolarSystem\jupiter.mtl" />
+    <Content Include="examples\models\SolarSystem\jupiter.obj" />
+    <Content Include="examples\models\SolarSystem\mars.mtl" />
+    <Content Include="examples\models\SolarSystem\mars.obj" />
+    <Content Include="examples\models\SolarSystem\mercury.mtl" />
+    <Content Include="examples\models\SolarSystem\mercury.obj" />
+    <Content Include="examples\models\SolarSystem\moon.mtl" />
+    <Content Include="examples\models\SolarSystem\moon.obj" />
+    <Content Include="examples\models\SolarSystem\neptune.mtl" />
+    <Content Include="examples\models\SolarSystem\neptune.obj" />
+    <Content Include="examples\models\SolarSystem\pluto.mtl" />
+    <Content Include="examples\models\SolarSystem\pluto.obj" />
+    <Content Include="examples\models\SolarSystem\saturn.mtl" />
+    <Content Include="examples\models\SolarSystem\saturn.obj" />
+    <Content Include="examples\models\SolarSystem\sun.mtl" />
+    <Content Include="examples\models\SolarSystem\sun.obj" />
+    <Content Include="examples\models\SolarSystem\uranus.mtl" />
+    <Content Include="examples\models\SolarSystem\uranus.obj" />
+    <Content Include="examples\models\SolarSystem\venus.mtl" />
+    <Content Include="examples\models\SolarSystem\venus.obj" />
+    <Content Include="examples\sounds\ATTRIBUTIONS.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="lib\async.js" />
+    <Content Include="lib\firebase.js" />
+    <Content Include="lib\MTLLoader.js" />
+    <Content Include="lib\OBJMTLLoader.js" />
+    <Content Include="lib\OrbitControls.js" />
+    <Content Include="lib\three.js" />
+    <Content Include="lib\three.min.js" />
+    <Content Include="Models\BaseRing.jpg" />
+    <Content Include="Models\Cloud.jpg" />
+    <Content Include="Models\Dragon.jpg" />
+    <Content Include="Models\Terrain.jpg" />
+    <Content Include="Models\TextureAtlas.jpg" />
+    <Content Include="app.css" />
+    <Content Include="src\AltOBJMTLLoader.js" />
+    <Content Include="src\AltRenderer.js" />
+    <Content Include="src\cursor\AltObjectControls.js" />
+    <Content Include="src\cursor\ColorHoverEffect.js" />
+    <Content Include="src\cursor\CursorEvents.js" />
+    <Content Include="src\cursor\DragPlaneEffect.js" />
+    <Content Include="src\helpers\MultiLoader.js" />
+    <Content Include="src\sync\FirebaseSync.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56706</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56706/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
