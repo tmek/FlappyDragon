@@ -1,4 +1,7 @@
-﻿var inAltspace = !!window.Alt;
+﻿//var inAltspace = !!window.Alt;
+var inAltspace = window.hasOwnProperty('altspace');
+
+
 var scene = new THREE.Scene();
 var camera;
 var renderer;
@@ -138,7 +141,9 @@ function InitGame() {
     clock = new THREE.Clock();
 
     if (inAltspace) {
-        renderer = new THREE.AltRenderer();
+        //renderer = new THREE.AltRenderer(); // depricated.
+        renderer = altspace.getThreeJSRenderer({ version: '0.2.0' });
+
     }
     else {
         renderer = new THREE.WebGLRenderer({ alpha: true });

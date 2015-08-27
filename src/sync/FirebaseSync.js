@@ -26,6 +26,13 @@ FirebaseSync = function(firebaseRootUrl, appId, params) {
 	// console.log firebase events for debugging
 	this.TRACE = !!p.TRACE;
 
+	// passed to Firebase.authWithCustomToken
+	this.authToken = p.authToken || null;
+	this.authTokenPath = p.authTokenPath || null;
+	if ( this.authTokenPath ) { 
+		this.authToken = this._requestReadToken( this.authTokenPath );
+	}
+
 	this.objects = [];	// in the order they were added
 	this.key2obj = {};	// key2obj[ key ] = object
 	this.uuid2key = {};	// uuid2key[ object.uuid ] = key
@@ -84,7 +91,8 @@ FirebaseSync.prototype.addObject = function( object, key ) {
 
 	} else {
 
-		// Subscribe to this object when connection is complete.
+		// Any objects added before connect() get added to pendingObjects,
+		// subscribe to them once we get out firebaseRoom initialized.
 		this.pendingObjects.push( object );
 
 	}
@@ -125,6 +133,51 @@ FirebaseSync.prototype.connect = function( onConnectedCallback, addObjectCallbac
 	if ( onConnectedCallback ) {
 		this._onConnctedCallback = onConnectedCallback;
 	}
+
+	if ( this.authTokenPath || this.authToken ) {
+
+		// Wait until authorization token is read before proceeding.
+		var intervalId = setInterval( function() {
+
+			if ( this.authToken ) {
+
+				clearInterval( intervalId );
+				this._authenticateWithToken();
+
+			}
+
+		}.bind( this ), 100);
+
+	} else { 
+
+		this._joinRoom();
+
+	}
+
+};
+
+
+FirebaseSync.prototype._authenticateWithToken = function() {
+
+	// Optional custom authentication token
+	this.firebaseRoot.authWithCustomToken( this.authToken, function( error, authData) {
+
+		if ( this.TRACE ) {
+			console.log("Authentication payload:", authData);
+		}
+		if ( error ) {
+			throw new Error("Authentication failed: " + error.message);
+		}
+
+		console.log("Authentication successful: ", authData.auth);
+		this._joinRoom();
+
+	}.bind( this ));
+
+};
+
+
+FirebaseSync.prototype._joinRoom = function() {
 
 	// Handle these cases:
 	// (1) No roomId specified in URL: create room with random roomId and join it.
@@ -255,6 +308,38 @@ FirebaseSync.prototype.getRoomKey = function() {
 };
 
 
+FirebaseSync.prototype._requestReadToken = function( path ) {
+
+	// Get basename by removing last item (filename) from path.
+    var rootDir = window.location.pathname.split("/").slice(0,-1).join("/");
+
+    // Append path to URL of the root directory.
+    var url = window.location.origin + rootDir + "/" + path;
+
+	if ( this.TRACE ) console.log("Reading token from "+ url);
+
+	// Setting asychronous "false" below gives console warnings, so synchronize
+	// using setInterval above to ensure token is read before accessing Firebase.
+	var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+
+    request.onreadystatechange = function() {
+
+    	if ( request.readyState !== 4) return;
+
+		this.authToken = request.responseText;
+		if ( request.status !== 200 || this.authToken === null ) {
+			throw new Error("Failed to load the token file.");
+		}
+		if ( this.TRACE ) console.log("Got token:", this.authToken);
+
+	}.bind( this );
+
+	request.send(null)
+
+};
+
+
 FirebaseSync.prototype._subscribeObject = function( object, key ) {
 
 	// Listen for initial position of this object; if none, triggers a callback
@@ -271,6 +356,7 @@ FirebaseSync.prototype._subscribeObject = function( object, key ) {
 
 FirebaseSync.prototype._subscribePendingObjects = function() {
 
+	console.log("Syncing initial state of " + this.pendingObjects.length + " objects...")
 	for (var i=0; i < this.pendingObjects.length; i++ ) {
 
 		var object = this.pendingObjects[i];
@@ -332,7 +418,7 @@ FirebaseSync.prototype._startListeningRoom = function() {
 
 	}.bind( this ), this._firebaseCancel);
 
-	if ( this._onConnctedCallback ) {
+	if ( this._onConnctedCallback && this.pendingObjects.length === 0 ) {
 
 		this._onConnctedCallback();
 
@@ -527,6 +613,27 @@ FirebaseSync.prototype._onPositionChange = function(snapshot) {
 			object.userData.isSyncInitialized = true;
 
 			if ( this.TRACE ) console.log("INIT for " + key, objectData);
+
+			var idx = this.pendingObjects.indexOf( object );
+
+			if ( idx !== -1 ) {
+
+				this.pendingObjects.splice( idx, 1 );
+
+				if ( this.pendingObjects.length === 0 ) {
+
+					console.log("Done syncing initial object data");
+
+					if ( this._onConnctedCallback ) {
+
+						this._onConnctedCallback();
+
+					}
+
+				}
+
+			}
+
 		}
 
 	}
